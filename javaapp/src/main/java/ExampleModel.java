@@ -1,13 +1,12 @@
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 /**
  * Created by Robert Burek
  */
 @ToString
 @EqualsAndHashCode  //(onlyExplicitlyIncluded = true) - tylko wskazane
+@AllArgsConstructor
+@NoArgsConstructor
 public class ExampleModel {
 
     @Getter
@@ -28,7 +27,19 @@ public class ExampleModel {
     @Setter
     private int age;
 
-//    Metody wygenerowane poleceniem Intellij
+//    Konstruktory wygenerowane poleceniem Intellij
+//    public ExampleModel(String hairColor, int heigth, boolean isMale, int age) {
+//        this.hairColor = hairColor;
+//        this.heigth = heigth;
+//        this.isMale = isMale;
+//        this.age = age;
+//    }
+//
+//    public ExampleModel() {
+//    }
+
+
+    //    Metody wygenerowane poleceniem Intellij
 //
 //    @Override
 //    public boolean equals(Object o) {
