@@ -15,7 +15,11 @@ public class Main {
 
         new Main(true, true, true);
         ExampleModel exampleModel = new ExampleModel();
-        exampleModel.getHairColor();
+        exampleModel.setAge(40);
+        exampleModel.setHairColor("Blond");
+        exampleModel.setHeigth(178);
+        exampleModel.setMale(true);
 
+        System.out.println(exampleModel);
     }
 }
