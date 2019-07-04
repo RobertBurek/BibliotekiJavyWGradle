@@ -19,7 +19,16 @@ public class Main {
         exampleModel.setHairColor("Blond");
         exampleModel.setHeigth(178);
         exampleModel.setMale(true);
-
         System.out.println(exampleModel);
+
+        ExampleModel exampleModelDuplicate = new ExampleModel();
+        exampleModelDuplicate.setAge(40);
+        exampleModelDuplicate.setHairColor("Blond");
+        exampleModelDuplicate.setHeigth(178);
+        exampleModelDuplicate.setWidth(20);
+        exampleModelDuplicate.setMale(true);
+        System.out.println(exampleModelDuplicate);
+
+        System.out.println(exampleModel.equals(exampleModelDuplicate));
     }
 }
