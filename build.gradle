@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group 'pl.robertburek'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+
+    //api - wystawia wszystkie bibloiteki, najbardzie szerokie
+
+    //implementation - tylko jedna bibloitekę wymienioną po prawej,
+    //                  nie wystawia bibloiteki dalej, jest tylko dla nas.
+    //                  (stare compile)
+
+    //compileOnly (stare provided) tylko na czas budowania a nie w plikach
+    //                  wynikowych projektu
+
+    //powyższe można poprzedzić słowem test - tylko do modulów testowych
+}
+
+//mainClassName = "App"
