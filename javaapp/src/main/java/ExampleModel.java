@@ -1,32 +1,21 @@
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * Created by Robert Burek
  */
 
 @Builder
-@ToString
-@EqualsAndHashCode  //(onlyExplicitlyIncluded = true) - tylko wskazane
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 public class ExampleModel {
 
-    @Getter
-    @Setter
     //@EqualsAndHashCode.Include  - ten wskazany
     private String hairColor;
-    @Getter
-    @Setter
     private int heigth;
-    @Getter
-    @Setter
     @EqualsAndHashCode.Exclude
     private int width;  //wykluczony z Equals
-    @Getter
-    @Setter
     private boolean isMale;
-    @Getter
-    @Setter
     private int age;
 
     //    Builder  wtedy można zapisać instancje w ten
