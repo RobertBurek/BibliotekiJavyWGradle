@@ -12,7 +12,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ExampleModel exampleModel = new ExampleModel("Blond", 178, 45, true, 40);
+        Gson gson = new Gson();
+
+        ExampleModel exampleModel = ExampleModel.builder()
+                .cloth(new Cloth("Green", true))
+                .hairColor("Blond")
+                .heigth(178)
+                .width(45)
+                .isMale(true)
+                .age(40)
+                .build();
         System.out.print("exampleModel: ");
         System.out.println(exampleModel);
 
@@ -32,9 +41,10 @@ public class Main {
             log.info("Obiekty są takie same!");
 
         System.out.println("-----------------------Gson------------------------");
-        String json = new Gson().toJson(exampleModel);
+
+        String json = gson.toJson(exampleModel);
         // Załóżmy, że string json przyszedł z internetu lub z pliku
-        ExampleModel fromJsonExampleModel = new Gson().fromJson(json,ExampleModel.class);
+        ExampleModel fromJsonExampleModel = gson.fromJson(json, ExampleModel.class);
 
         System.out.print("fromJsonExampleModel: ");
         System.out.println(fromJsonExampleModel);

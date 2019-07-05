@@ -19,4 +19,5 @@ public class ExampleModel {
     @EqualsAndHashCode.Exclude
     private boolean isMale;
     private int age;
+    private Cloth cloth;
 }
