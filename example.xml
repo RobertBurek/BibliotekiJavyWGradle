@@ -1,0 +1,7 @@
+<exampleModel>
+   <hairColor>Blond</hairColor>
+   <heigth>178</heigth>
+   <width>45</width>
+   <isMale>true</isMale>
+   <age>40</age>
+</exampleModel>

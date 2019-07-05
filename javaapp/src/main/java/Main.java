@@ -1,5 +1,8 @@
 import lombok.extern.java.Log;
+import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.core.Persister;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,26 +13,24 @@ import java.util.List;
 @Log
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         List<Cloth> clothList = Arrays.asList(new Cloth("Green", true), new Cloth("Red", false));
-        ExampleModel exampleModel = ExampleModel.builder()
-                .hairColor("Blond")
-                .heigth(178)
-                .width(45)
-                .isMale(true)
-                .age(40)
-                .build();
+        ExampleModel exampleModel = new ExampleModel();
+        exampleModel.setHairColor("Blond");
+        exampleModel.setHeigth(178);
+        exampleModel.setWidth(45);
+        exampleModel.setMale(true);
+        exampleModel.setAge(40);
         System.out.print("exampleModel: ");
         System.out.println(exampleModel);
 
-        ExampleModel exampleModelDuplicate = ExampleModel.builder()
-                .age(40)
-                .isMale(false)
-                .hairColor("Blond")
-                .heigth(178)
-                .width(60)
-                .build();
+        ExampleModel exampleModelDuplicate = new ExampleModel();
+        exampleModelDuplicate.setAge(40);
+        exampleModelDuplicate.setMale(false);
+        exampleModelDuplicate.setHairColor("Blond");
+        exampleModelDuplicate.setHeigth(178);
+        exampleModelDuplicate.setWidth(60);
         System.out.print("exampleModelDuplicate: ");
         System.out.println(exampleModelDuplicate);
         System.out.println("");
@@ -43,5 +44,13 @@ public class Main {
 
         List<ExampleModel> listaExampleModels = Arrays.asList(exampleModel, exampleModelDuplicate);
 
+        Serializer serializer = new Persister();
+        File result = new File("example.xml");
+        serializer.write(exampleModel, result);
+
+        ExampleModel readExampleModel = serializer.read(ExampleModel.class, result);
+        log.info(readExampleModel.toString());
+        log.info(exampleModel.toString());
+        log.info(String.valueOf(exampleModel.equals(readExampleModel)));
     }
 }
