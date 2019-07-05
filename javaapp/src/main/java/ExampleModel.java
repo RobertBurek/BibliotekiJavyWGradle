@@ -29,8 +29,11 @@ public class ExampleModel {
     @Getter
     @Setter
     private int age;
-//    @Getter @Setter
-//    private Cloth cloth;
+    //    @EqualsAndHashCode.Exclude - jeżeli nie wykluczymy z equals to musimy dodać adnotację lomboka do klasy Cloth
+//    a jak wykluczymy tutaj Cloth z equals to adnotacja w klasie Cloth nie jest konieczna
+    @Getter
+    @Setter
+    private Cloth cloth;
 //    @Getter @Setter
 //    private List<Cloth> cloths;
 }

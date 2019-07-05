@@ -22,6 +22,7 @@ public class Main {
         exampleModel.setWidth(45);
         exampleModel.setMale(true);
         exampleModel.setAge(40);
+        exampleModel.setCloth(new Cloth("Green", true));
         System.out.print("exampleModel: ");
         System.out.println(exampleModel);
 
@@ -31,6 +32,7 @@ public class Main {
         exampleModelDuplicate.setHairColor("Blond");
         exampleModelDuplicate.setHeigth(178);
         exampleModelDuplicate.setWidth(60);
+        exampleModelDuplicate.setCloth(new Cloth("Green", true));
         System.out.print("exampleModelDuplicate: ");
         System.out.println(exampleModelDuplicate);
         System.out.println("");
