@@ -1,5 +1,9 @@
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import lombok.extern.java.Log;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Robert Burek
@@ -14,8 +18,9 @@ public class Main {
 
         Gson gson = new Gson();
 
+        List<Cloth> clothList = Arrays.asList(new Cloth("Green", true), new Cloth("Red", false));
         ExampleModel exampleModel = ExampleModel.builder()
-                .cloth(new Cloth("Green", true))
+                .cloths(clothList)
                 .hairColor("Blond")
                 .heigth(178)
                 .width(45)
@@ -26,6 +31,7 @@ public class Main {
         System.out.println(exampleModel);
 
         ExampleModel exampleModelDuplicate = ExampleModel.builder()
+                .cloths(clothList)
                 .age(40)
                 .isMale(false)
                 .hairColor("Blond")
@@ -35,24 +41,30 @@ public class Main {
         System.out.print("exampleModelDuplicate: ");
         System.out.println(exampleModelDuplicate);
         System.out.println("");
-        System.out.println("exampleModel  vs  exampleModelDuplicate");
+        System.out.print("exampleModel  vs  exampleModelDuplicate : ");
         System.out.println(exampleModel.equals(exampleModelDuplicate));
         if (exampleModel.equals(exampleModelDuplicate))
             log.info("Obiekty są takie same!");
 
+
         System.out.println("-----------------------Gson------------------------");
 
-        String json = gson.toJson(exampleModel);
-        // Załóżmy, że string json przyszedł z internetu lub z pliku
-        ExampleModel fromJsonExampleModel = gson.fromJson(json, ExampleModel.class);
+        List<ExampleModel> listaExampleModels = Arrays.asList(exampleModel, exampleModelDuplicate);
+        String json = gson.toJson(listaExampleModels);
+        log.info(json);
+        // dane json są tablicą, zatem należy zastosować klasę TypeToken
+        List<ExampleModel> fromJsonExampleList = gson.fromJson(json,
+                new TypeToken<List<ExampleModel>>() {
+                }.getType());
 
-        System.out.print("fromJsonExampleModel: ");
-        System.out.println(fromJsonExampleModel);
+        System.out.print("fromJsonExampleList: ");
+        System.out.println(fromJsonExampleList);
         System.out.println("");
-        System.out.print("exampleModel  vs  fromJsonExampleModel : ");
-        System.out.println(exampleModel.equals(fromJsonExampleModel));
-        if (exampleModel.equals(fromJsonExampleModel))
-            log.info("Obiekty są takie same!");
+        System.out.print("listaExampleModels  vs  fromJsonExampleList : ");
+        System.out.println(listaExampleModels.equals(fromJsonExampleList));
+        if (listaExampleModels.equals(fromJsonExampleList))
+            log.info("Listy obiektów są takie same!");
+        log.info(fromJsonExampleList.toString());
 
         new Gson();
     }
