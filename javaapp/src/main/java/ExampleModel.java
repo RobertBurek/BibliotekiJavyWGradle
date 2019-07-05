@@ -3,8 +3,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.extern.java.Log;
 
-import java.util.List;
-
 /**
  * Created by Robert Burek
  */
@@ -21,5 +19,6 @@ public class ExampleModel {
     @EqualsAndHashCode.Exclude
     private boolean isMale;
     private int age;
-    private List<Cloth> cloths;
+//    private Cloth cloth;
+//    private List<Cloth> cloths;
 }
