@@ -3,6 +3,8 @@ import lombok.*;
 /**
  * Created by Robert Burek
  */
+
+@Builder
 @ToString
 @EqualsAndHashCode  //(onlyExplicitlyIncluded = true) - tylko wskazane
 @AllArgsConstructor
@@ -27,7 +29,33 @@ public class ExampleModel {
     @Setter
     private int age;
 
-//    Konstruktory wygenerowane poleceniem Intellij
+    //    Builder  wtedy można zapisać instancje w ten
+//    sposób: exampleModelDuplicate.setHeigth(178).setHairColor("Blond");
+    public ExampleModel myHeigth(int heigth) {
+        this.heigth = heigth;
+        return this;
+    }
+
+    public ExampleModel myHairColor(String hairColor) {
+        this.hairColor = hairColor;
+        return this;
+    }
+
+    public ExampleModel myWidth(int width) {
+        this.width = width;
+        return this;
+    }
+
+    public ExampleModel myMale(boolean male) {
+        isMale = male;
+        return this;
+    }
+
+    public ExampleModel myAge(int age) {
+        this.age = age;
+        return this;
+    }
+    //    Konstruktory wygenerowane poleceniem Intellij
 //    public ExampleModel(String hairColor, int heigth, boolean isMale, int age) {
 //        this.hairColor = hairColor;
 //        this.heigth = heigth;
