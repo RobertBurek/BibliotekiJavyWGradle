@@ -1,3 +1,4 @@
+import com.google.gson.Gson;
 import lombok.extern.java.Log;
 
 /**
@@ -28,5 +29,6 @@ public class Main {
         if (exampleModel.equals(exampleModelDuplicate))
             log.info("Obiekty są takie same!");
 
+        new Gson();
     }
 }
