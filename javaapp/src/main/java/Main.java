@@ -1,15 +1,26 @@
 import lombok.AllArgsConstructor;
+import lombok.extern.java.Log;
+
+import java.util.logging.Logger;
 
 /**
  * Created by Robert Burek
  */
 
+@Log
 @AllArgsConstructor  //adnotacja z lomboka
 public class Main {
 
     Boolean a;
     Boolean b;
     Boolean c;
+
+    //logger ręcznie napisany
+    private static final Logger myLog = java
+            .util
+            .logging
+            .Logger
+            .getLogger(Main.class.getName());
 
     public static void main(String[] args) {
 
@@ -40,10 +51,12 @@ public class Main {
         System.out.println(exampleModelBuilder2);
         System.out.println("exampleModelBuilder  vs  exampleModelBuilder2");
         System.out.println(exampleModelBuilder.equals(exampleModelBuilder2));
+        if (exampleModelBuilder.equals(exampleModelBuilder2))
+            log.info("Obiekty są takie same! - info LOMBOK");
 
         ExampleModel exampleModelDuplicate = new ExampleModel("", 0, 0, true, 0);
         exampleModelDuplicate.setAge(40);
-        exampleModelDuplicate.setHeigth(178);
+        exampleModelDuplicate.setHeigth(200);
         exampleModelDuplicate.setHairColor("Blond");
         exampleModelDuplicate.setWidth(20);
         exampleModelDuplicate.setMale(true);
@@ -52,5 +65,7 @@ public class Main {
 
         System.out.println("exampleModel  vs  exampleModelDuplicate");
         System.out.println(exampleModel.equals(exampleModelDuplicate));
+        if (!exampleModel.equals(exampleModelDuplicate))
+                myLog.info("Obiekty nie są takie same! - myInfo");
     }
 }

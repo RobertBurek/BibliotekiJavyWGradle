@@ -1,11 +1,13 @@
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.extern.java.Log;
 
 /**
  * Created by Robert Burek
  */
 
+@Log
 @Builder
 @Data
 public class ExampleModel {
@@ -32,6 +34,7 @@ public class ExampleModel {
 
     public ExampleModel myWidth(int width) {
         this.width = width;
+        log.info("Przypisałem wartość WIDTH");
         return this;
     }
 
