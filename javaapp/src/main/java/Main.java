@@ -1,12 +1,10 @@
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import lombok.extern.java.Log;
 import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
+import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.core.Persister;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.List;
 
 /**
  * Created by Robert Burek
@@ -21,9 +19,9 @@ public class Main {
         OkHttpClient client = new OkHttpClient();
 
         //Tworzemy zapytanie http (gdzie są dane?)
-        // generator Json : https://www.json-generator.com/
+        // generator xml : https://countwordsfree.com/xmlviewer#save
         Request request = new Request.Builder()
-                .url("http://www.json-generator.com/api/json/get/cfcBGBkbDm?indent=2")
+                .url("https://countwordsfree.com/download/txt/fbdc03fe-8c6a-4ce1-917c-a22a2de7295d")
                 .build();
 
         //Tworzymy reakcję na pobranie lub nie pobranie danych
@@ -35,12 +33,14 @@ public class Main {
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                String json = response.body().string();
-                Type type = new TypeToken<List<Cloth>>() {
-                }.getType();
-                List<Cloth> cloths = new Gson().fromJson(json, type);
-                log.info(cloths.get(0).toString());
-                log.info(cloths.toString());
+                String xml = response.body().string();
+                Serializer serializer = new Persister();
+                try {
+                    Cloth readCloth = serializer.read(Cloth.class, xml);
+                    log.info(readCloth.toString());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
