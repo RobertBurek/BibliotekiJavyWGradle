@@ -4,7 +4,6 @@ import org.simpleframework.xml.core.Persister;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -20,8 +19,8 @@ public class Main {
         clothList.add(new Cloth("Green", true));
         clothList.add(new Cloth("Red", false));
 
-//      Nie może być, nie posiada bezargumentowego konstruktora i kożystamy z innej klasy
-//      Arrays.asList(new Cloth("Green", true), new Cloth("Red", false));
+//      Nie posiada bezargumentowego konstruktora i korzystamy z innej klasy - ArrayList<>()
+//      Nie może być - Arrays.asList(new Cloth("Green", true), new Cloth("Red", false));
         ExampleModel exampleModel = new ExampleModel();
         exampleModel.setHairColor("Blond");
         exampleModel.setHeigth(178);
@@ -50,8 +49,6 @@ public class Main {
 
         System.out.println("-----------------------Simple XML------------------------");
 
-        List<ExampleModel> listaExampleModels = Arrays.asList(exampleModel, exampleModelDuplicate);
-
         Serializer serializer = new Persister();
         File result = new File("example.xml");
         serializer.write(exampleModel, result);
@@ -60,5 +57,23 @@ public class Main {
         log.info(readExampleModel.toString());
         log.info(exampleModel.toString());
         log.info(String.valueOf(exampleModel.equals(readExampleModel)));
+
+        System.out.println("-----------------------SimpleXML------Klasa->tablica obiektów--------------");
+//        Sam obiekt typu ArrayList nie jest wspierany w SimpleXML, trzeba użyć klasy z taką tablicą.
+
+        List<ExampleModel> listaExampleModels = new ArrayList<>();
+        listaExampleModels.add(exampleModel);
+        listaExampleModels.add(exampleModelDuplicate);
+
+        ExampleModelsList exampleModelsList = new ExampleModelsList(listaExampleModels);
+
+        Serializer serializerL = new Persister();
+        File resultL = new File("exampleL.xml");
+        serializer.write(exampleModelsList, resultL);
+
+        ExampleModelsList readExampleModelsList = serializerL.read(ExampleModelsList.class, resultL);
+        log.info(readExampleModelsList.toString());
+        log.info(exampleModelsList.toString());
+        log.info(String.valueOf(exampleModelsList.equals(readExampleModelsList)));
     }
 }

@@ -1,0 +1,38 @@
+<exampleModelsList>
+    <exampleModelList class="java.util.ArrayList">
+        <exampleModel>
+            <hairColor>Blond</hairColor>
+            <heigth>178</heigth>
+            <width>45</width>
+            <isMale>true</isMale>
+            <age>40</age>
+            <cloths class="java.util.ArrayList">
+                <cloth>
+                    <color>Green</color>
+                    <isNew>true</isNew>
+                </cloth>
+                <cloth>
+                    <color>Red</color>
+                    <isNew>false</isNew>
+                </cloth>
+            </cloths>
+        </exampleModel>
+        <exampleModel>
+            <hairColor>Blond</hairColor>
+            <heigth>178</heigth>
+            <width>60</width>
+            <isMale>false</isMale>
+            <age>40</age>
+            <cloths class="java.util.ArrayList">
+                <cloth>
+                    <color>Green</color>
+                    <isNew>true</isNew>
+                </cloth>
+                <cloth>
+                    <color>Red</color>
+                    <isNew>false</isNew>
+                </cloth>
+            </cloths>
+        </exampleModel>
+    </exampleModelList>
+</exampleModelsList>
