@@ -3,6 +3,7 @@ import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,14 +16,19 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        List<Cloth> clothList = Arrays.asList(new Cloth("Green", true), new Cloth("Red", false));
+        List<Cloth> clothList = new ArrayList<>();
+        clothList.add(new Cloth("Green", true));
+        clothList.add(new Cloth("Red", false));
+
+//      Nie może być, nie posiada bezargumentowego konstruktora i kożystamy z innej klasy
+//      Arrays.asList(new Cloth("Green", true), new Cloth("Red", false));
         ExampleModel exampleModel = new ExampleModel();
         exampleModel.setHairColor("Blond");
         exampleModel.setHeigth(178);
         exampleModel.setWidth(45);
         exampleModel.setMale(true);
         exampleModel.setAge(40);
-        exampleModel.setCloth(new Cloth("Green", true));
+        exampleModel.setCloths(clothList);
         System.out.print("exampleModel: ");
         System.out.println(exampleModel);
 
@@ -32,7 +38,7 @@ public class Main {
         exampleModelDuplicate.setHairColor("Blond");
         exampleModelDuplicate.setHeigth(178);
         exampleModelDuplicate.setWidth(60);
-        exampleModelDuplicate.setCloth(new Cloth("Green", true));
+        exampleModelDuplicate.setCloths(clothList);
         System.out.print("exampleModelDuplicate: ");
         System.out.println(exampleModelDuplicate);
         System.out.println("");

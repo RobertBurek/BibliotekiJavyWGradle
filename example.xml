@@ -1,11 +1,17 @@
 <exampleModel>
-   <hairColor>Blond</hairColor>
-   <heigth>178</heigth>
-   <width>45</width>
-   <isMale>true</isMale>
-   <age>40</age>
-   <cloth>
-      <color>Green</color>
-      <isNew>true</isNew>
-   </cloth>
+    <hairColor>Blond</hairColor>
+    <heigth>178</heigth>
+    <width>45</width>
+    <isMale>true</isMale>
+    <age>40</age>
+    <cloths class="java.util.ArrayList">
+        <cloth>
+            <color>Green</color>
+            <isNew>true</isNew>
+        </cloth>
+        <cloth>
+            <color>Red</color>
+            <isNew>false</isNew>
+        </cloth>
+    </cloths>
 </exampleModel>

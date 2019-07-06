@@ -1,6 +1,8 @@
 import lombok.*;
 import lombok.extern.java.Log;
 
+import java.util.List;
+
 /**
  * Created by Robert Burek
  */
@@ -31,9 +33,10 @@ public class ExampleModel {
     private int age;
     //    @EqualsAndHashCode.Exclude - jeżeli nie wykluczymy z equals to musimy dodać adnotację lomboka do klasy Cloth
 //    a jak wykluczymy tutaj Cloth z equals to adnotacja w klasie Cloth nie jest konieczna
+//    @Getter
+//    @Setter
+//    private Cloth cloth;
     @Getter
     @Setter
-    private Cloth cloth;
-//    @Getter @Setter
-//    private List<Cloth> cloths;
+    private List<Cloth> cloths;
 }
