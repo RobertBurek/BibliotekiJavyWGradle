@@ -9,9 +9,15 @@ import lombok.extern.java.Log;
 @Log
 public class Database implements Repository {
 
+    private String host;
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
     @Override
     public void getUsers() {
-        log.info("injected z Database");
+        log.info("injected z Database a host: " + host);
     }
 }
 
