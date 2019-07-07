@@ -4,6 +4,9 @@ package injection;
  * Created by Robert Burek
  */
 public class RaportPrinter {
-    private Database database;
+    @Inject
+    private Repository repository;
     // i problemy się narastają
+
+    //logikadrukowania raportu
 }
