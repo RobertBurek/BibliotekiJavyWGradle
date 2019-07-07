@@ -12,8 +12,7 @@ public class ListFiller {
     private Repository repository;
 
 
-
-    public void getUser() {
+    public void getUsers() {
         repository.getUsers();
         //przetworzenie users na format zgodny z listą użytkowników
     }

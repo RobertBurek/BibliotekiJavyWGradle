@@ -1,12 +1,17 @@
 package injection;
 
+import lombok.extern.java.Log;
+
 /**
  * Created by Robert Burek
  */
-public class Database {
 
-    public void getUser() {
+@Log
+public class Database implements Repository {
 
+    @Override
+    public void getUsers() {
+        log.info("injected z Database");
     }
 }
 
