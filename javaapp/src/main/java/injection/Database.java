@@ -18,6 +18,7 @@ public class Database implements Repository {
     @Override
     public void getUsers() {
         log.info("injected z Database a host: " + host);
+        log.info(toString());
     }
 }
 

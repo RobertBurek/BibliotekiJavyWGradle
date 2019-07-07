@@ -16,6 +16,8 @@ public class DatabaseProvider implements Provider<Database> {
 
     @Override
     public Database get() {
+        //3. medota zasięgu dla Database
+        // sprawdzić czy istnieje i ewentualnie utworzyć lub nie
         Database repository = new Database();
         repository.setHost(host);
         return repository;
